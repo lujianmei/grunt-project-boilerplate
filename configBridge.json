@@ -39,6 +39,10 @@
     "2015-07-02-wajuejihuodong/dist/css/index.min.css": ["2015-07-02-wajuejihuodong/dist/css/index.css"],
     "2015-07-04-jianjigaiban/dist/css/index.min.css": ["2015-07-04-jianjigaiban/dist/css/index.css"]
   },
+  "imagespaths": {
+    "2015-07-02-wajuejihuodong/dist/images/": ["2015-07-02-wajuejihuodong/images/*"],
+    "2015-07-04-jianjigaiban/dist/images/": ["2015-07-04-jianjigaiban/images/*"]
+  },
   "config": {
     "autoprefixerBrowsers": [
       "Android 2.3",

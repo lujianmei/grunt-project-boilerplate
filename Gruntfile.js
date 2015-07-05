@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc'
       },
       core: {
-        src: ['**/js/*.js','!node_modules/**/*.js','!*.js']
+        src: ['**/js/*.js','!node_modules/**/*.js','!*.js','!**/js/*.min.js']
       }
     },
 
@@ -103,30 +103,30 @@ module.exports = function (grunt) {
 
 
 //    less: {
-//      compileCore: {
-//        options: {
-//          strictMath: true,
-//          sourceMap: true,
-//          outputSourceFiles: true,
-//          sourceMapURL: '<%= pkg.name %>.css.map',
-//          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
-//        },
-//        src: 'less/bootstrap.less',
-//        dest: 'dist/css/<%= pkg.name %>.css'
-//      },
-//      compileTheme: {
-//        options: {
-//          strictMath: true,
-//          sourceMap: true,
-//          outputSourceFiles: true,
-//          sourceMapURL: '<%= pkg.name %>-theme.css.map',
-//          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
-//        },
-//        src: 'less/theme.less',
-//        dest: 'dist/css/<%= pkg.name %>-theme.css'
-//      }
-//    },
-//
+    //      compileCore: {
+    //        options: {
+    //          strictMath: true,
+    //          sourceMap: true,
+    //          outputSourceFiles: true,
+    //          sourceMapURL: '<%= pkg.name %>.css.map',
+    //          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+    //        },
+    //        src: 'less/bootstrap.less',
+    //        dest: 'dist/css/<%= pkg.name %>.css'
+    //      },
+    //      compileTheme: {
+    //        options: {
+    //          strictMath: true,
+    //          sourceMap: true,
+    //          outputSourceFiles: true,
+    //          sourceMapURL: '<%= pkg.name %>-theme.css.map',
+    //          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
+    //        },
+    //        src: 'less/theme.less',
+    //        dest: 'dist/css/<%= pkg.name %>-theme.css'
+    //      }
+    //    },
+    //
 
     csslint: {
       options: {
@@ -158,6 +158,11 @@ module.exports = function (grunt) {
       }
     },
 
+    copy:{
+      images:{
+        files:configBridge.imagespaths
+      }
+    },
 //    copy: {
 //      fonts: {
 //        expand: true,
@@ -323,7 +328,8 @@ module.exports = function (grunt) {
   // Docs HTML validation task
 //  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
 
-    grunt.registerTask('test-js', ['jshint:core', 'jscs:core']);
+//    grunt.registerTask('test-js', ['jshint:core', 'jscs:core']);
+    grunt.registerTask('test-js', ['jshint:core']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat:core', 'uglify:core']);
@@ -335,7 +341,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'processhtml', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'dist-css','processhtml','dist-js','test-js']);
+  grunt.registerTask('default', ['clean:dist','copy:images', 'dist-css','processhtml','dist-js','test-js']);
 
   // Docs task.
 //  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
