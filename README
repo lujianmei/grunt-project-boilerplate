@@ -1,1 +1,12 @@
 boilerplate for grunt project
+
+1. Download repo from github;
+2. Execut following command under this repo directory:
+    npm install
+3. Execut following command for using grunt:
+    grunt
+    grunt clean
+    grunt dist-js
+    grunt dist-css
+    grunt test-js
+    grunt dist
