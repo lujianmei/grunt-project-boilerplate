@@ -10,3 +10,18 @@ boilerplate for grunt project
     grunt dist-css
     grunt test-js
     grunt dist
+4. Change configuration in configBridge.json file:
+/*对html中的引用的文件进行合并*/
+"htmlpaths"
+/*对合并后的文件进行压缩*/
+"htmlpaths_min"
+/*对各个目录的js文件进行合并文件*/
+"jspaths"
+/*对合并后的js文件进行压缩*/
+"jspaths_min"
+/*对各个目录中的css文件进行合并*/
+"csspaths"
+/*对合并后的css文件进行压缩*/
+"csspaths_min"
+/*将开发目录下的图片资源copy到发布目录下*/
+  "imagespaths"

@@ -33,8 +33,8 @@ module.exports = function (grunt) {
             ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under the <%= pkg.license %> license\n' +
             ' */\n',
-    jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
-    jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
+//  jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
+//  jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
@@ -61,7 +61,8 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+//      banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+        banner: '<%= banner %>\n',
         stripBanners: false
       },
       core:{
@@ -78,7 +79,7 @@ module.exports = function (grunt) {
         preserveComments: 'some'
       },
       core: {
-        files: configBridge.jspaths_dist
+        files: configBridge.jspaths_min
         }
     },
 
@@ -145,7 +146,7 @@ module.exports = function (grunt) {
         advanced: false
       },
       dist: {
-        files: configBridge.csspaths_dist
+        files: configBridge.csspaths_min
       }
     },
 
@@ -188,37 +189,31 @@ module.exports = function (grunt) {
       }
     },
 
-    jekyll: {
-      options: {
-        config: '_config.yml'
-      },
-      docs: {},
-      github: {
+//  jekyll: {
+//    options: {
+//      config: '_config.yml'
+//    },
+//    docs: {},
+//    github: {
+//      options: {
+//        raw: 'github: true'
+//      }
+//    }
+//  },
+
+    htmlmin: {
+      dist: {
         options: {
-          raw: 'github: true'
-        }
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          minifyCSS: true,
+          minifyJS: true,
+          removeAttributeQuotes: true,
+          removeComments: true
+        },
+        files: configBridge.htmlpaths_min
       }
     },
-
-//    htmlmin: {
-//      dist: {
-//        options: {
-//          collapseWhitespace: true,
-//          conservativeCollapse: true,
-//          minifyCSS: true,
-//          minifyJS: true,
-//          removeAttributeQuotes: true,
-//          removeComments: true
-//        },
-//        expand: true,
-//        cwd: '_gh_pages',
-//        dest: '_gh_pages',
-//        src: [
-//          '**/*.html',
-//          '!examples/**/*.html'
-//        ]
-//      }
-//    },
 
 //    jade: {
 //      options: {
@@ -235,16 +230,16 @@ module.exports = function (grunt) {
 //      }
 //    },
 
-//    htmllint: {
-//      options: {
-//        ignore: [
-//          'Attribute "autocomplete" not allowed on element "button" at this point.',
-//          'Attribute "autocomplete" not allowed on element "input" at this point.',
-//          'Element "img" is missing required attribute "src".'
-//        ]
-//      },
-//      src: '_gh_pages/**/*.html'
-//    },
+    htmllint: {
+      options: {
+        ignore: [
+          'Attribute "autocomplete" not allowed on element "button" at this point.',
+          'Attribute "autocomplete" not allowed on element "input" at this point.',
+          'Element "img" is missing required attribute "src".'
+        ]
+      },
+      files: '<%= htmlmin.files%>'
+    },
 
 //    watch: {
 //      src: {
@@ -336,6 +331,9 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('dist-css', ['csscomb:dist', 'cssmin:dist', 'csslint:core']);
+
+  // HTML distribution task.
+  grunt.registerTask('dist-html', ['htmlmin','htmllint' ]);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'processhtml', 'dist-js']);
