@@ -11,6 +11,12 @@
     "2015-07-04-jianjigaiban/dist/index.min.html": ["2015-07-04-jianjigaiban/dist/index.html"],
     "2015-07-04-jianjigaiban/dist/test.min.html": ["2015-07-04-jianjigaiban/dist/test.html"]
   },
+  "htmlpaths_minlint": [
+    "2015-07-02-wajuejihuodong/dist/index.min.html",
+    "2015-07-02-wajuejihuodong/dist/test.min.html",
+    "2015-07-04-jianjigaiban/dist/index.min.html",
+    "2015-07-04-jianjigaiban/dist/test.min.html"
+  ],
   "jspaths": {
     "2015-07-02-wajuejihuodong/dist/js/index.js": ["2015-07-02-wajuejihuodong/js/*.js"],
     "2015-07-04-jianjigaiban/dist/js/index.js": ["2015-07-04-jianjigaiban/js/*.js"]
@@ -31,6 +37,10 @@
     "2015-07-02-wajuejihuodong/dist/images/": ["2015-07-02-wajuejihuodong/images/*"],
     "2015-07-04-jianjigaiban/dist/images/": ["2015-07-04-jianjigaiban/images/*"]
   },
+  "distlist": [
+    "2015-07-02-wajuejihuodong/dist/",
+    "2015-07-04-jianjigaiban/dist/"
+  ],
   "config": {
     "autoprefixerBrowsers": [
       "Android 2.3",

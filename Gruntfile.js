@@ -12,16 +12,8 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
-//var fs = require('fs');
-//var path = require('path');
-//var npmShrinkwrap = require('npm-shrinkwrap');
-  var configBridge = grunt.file.readJSON('./configBridge.json', { encoding: 'utf8' });
 
-//Object.keys(configBridge.paths).forEach(function (key) {
-//  configBridge.paths[key].forEach(function (val, i, arr) {
-//    arr[i] = path.join('./docs/assets', val);
-//  });
-//});
+  var configBridge = grunt.file.readJSON('./configBridge.json', { encoding: 'utf8' });
 
   // Project configuration.
   grunt.initConfig({
@@ -29,16 +21,14 @@ module.exports = function (grunt) {
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-            ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under the <%= pkg.license %> license\n' +
-            ' */\n',
-//  jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
-//  jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
+      ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+      ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+      ' * Licensed under the <%= pkg.license %> license\n' +
+      ' */\n',
 
     // Task configuration.
     clean: {
-      dist: '**/dist'
+      dist: configBridge.distlist
     },
 
     jshint: {
@@ -61,7 +51,6 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-//      banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
         banner: '<%= banner %>\n',
         stripBanners: false
       },
@@ -80,17 +69,16 @@ module.exports = function (grunt) {
       },
       core: {
         files: configBridge.jspaths_min
-        }
+      }
     },
 
-//    qunit: {
-//      options: {
-//        inject: 'js/tests/unit/phantom.js'
-//      },
-//      files: 'js/tests/index.html'
-//    },
+    //    qunit: {
+    //      options: {
+    //        inject: 'js/tests/unit/phantom.js'
+    //      },
+    //      files: 'js/tests/index.html'
+    //    },
 
-    //对html进行内容替换，替换其中的多个js, css文件为一个，即合并后的文件名称
     processhtml: {
       options: {
         data: {
@@ -103,7 +91,7 @@ module.exports = function (grunt) {
     },
 
 
-//    less: {
+    //    less: {
     //      compileCore: {
     //        options: {
     //          strictMath: true,
@@ -164,22 +152,6 @@ module.exports = function (grunt) {
         files:configBridge.imagespaths
       }
     },
-//    copy: {
-//      fonts: {
-//        expand: true,
-//        src: 'fonts/*',
-//        dest: 'dist/'
-//      }
-//      docs: {
-//        expand: true,
-//        cwd: 'dist/',
-//        src: [
-//          '**/*'
-//        ],
-//        dest: 'docs/dist/'
-//      }
-//    },
-
     connect: {
       server: {
         options: {
@@ -189,17 +161,17 @@ module.exports = function (grunt) {
       }
     },
 
-//  jekyll: {
-//    options: {
-//      config: '_config.yml'
-//    },
-//    docs: {},
-//    github: {
-//      options: {
-//        raw: 'github: true'
-//      }
-//    }
-//  },
+    //  jekyll: {
+    //    options: {
+    //      config: '_config.yml'
+    //    },
+    //    docs: {},
+    //    github: {
+    //      options: {
+    //        raw: 'github: true'
+    //      }
+    //    }
+    //  },
 
     htmlmin: {
       dist: {
@@ -215,21 +187,6 @@ module.exports = function (grunt) {
       }
     },
 
-//    jade: {
-//      options: {
-//        pretty: true,
-//        data: getLessVarsData
-//      },
-//      customizerVars: {
-//        src: 'docs/_jade/customizer-variables.jade',
-//        dest: 'docs/_includes/customizer-variables.html'
-//      },
-//      customizerNav: {
-//        src: 'docs/_jade/customizer-nav.jade',
-//        dest: 'docs/_includes/nav/customize.html'
-//      }
-//    },
-
     htmllint: {
       options: {
         ignore: [
@@ -238,81 +195,29 @@ module.exports = function (grunt) {
           'Element "img" is missing required attribute "src".'
         ]
       },
-      files: '<%= htmlmin.files%>'
+      files: configBridge.htmlpaths_minlint
     },
 
-//    watch: {
-//      src: {
-//        files: '<%= jshint.core.src %>',
-//        tasks: ['jshint:core', 'qunit', 'concat']
-//      },
-//      test: {
-//        files: '<%= jshint.test.src %>',
-//        tasks: ['jshint:test', 'qunit']
-//      },
-//      less: {
-//        files: 'less/**/*.less',
-//        tasks: 'less'
-//      }
-//    },
-
-//    sed: {
-//      versionNumber: {
-//        pattern: (function () {
-//          var old = grunt.option('oldver');
-//          return old ? RegExp.quote(old) : old;
-//        })(),
-//        replacement: grunt.option('newver'),
-//        exclude: [
-//          'dist/fonts',
-//          'docs/assets',
-//          'fonts',
-//          'js/tests/vendor',
-//          'node_modules',
-//          'test-infra'
-//        ],
-//        recursive: true
-//      }
-//    },
-//
-//    'saucelabs-qunit': {
-//      all: {
-//        options: {
-//          build: process.env.TRAVIS_JOB_ID,
-//          throttled: 10,
-//          maxRetries: 3,
-//          maxPollRetries: 4,
-//          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
-//          browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
-//        }
-//      }
-//    },
+    //    watch: {
+    //      src: {
+    //        files: '<%= jshint.core.src %>',
+    //        tasks: ['jshint:core', 'qunit', 'concat']
+    //      },
+    //      test: {
+    //        files: '<%= jshint.test.src %>',
+    //        tasks: ['jshint:test', 'qunit']
+    //      },
+    //      less: {
+    //        files: 'less/**/*.less',
+    //        tasks: 'less'
+    //      }
+    //    },
 
     exec: {
       npmUpdate: {
         command: 'npm update'
       }
     }
-
-//    compress: {
-//      main: {
-//        options: {
-//          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
-//          mode: 'zip',
-//          level: 9,
-//          pretty: true
-//        },
-//        files: [
-//          {
-//            expand: true,
-//            cwd: 'dist/',
-//            src: ['**'],
-//            dest: 'bootstrap-<%= pkg.version %>-dist'
-//          }
-//        ]
-//      }
-//    }
-//
   });
 
 
@@ -320,11 +225,8 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
   require('time-grunt')(grunt);
 
-  // Docs HTML validation task
-//  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
-
-//    grunt.registerTask('test-js', ['jshint:core', 'jscs:core']);
-    grunt.registerTask('test-js', ['jshint:core']);
+  //    grunt.registerTask('test-js', ['jshint:core', 'jscs:core']);
+  grunt.registerTask('test-js', ['jshint:core']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat:core', 'uglify:core']);
@@ -339,15 +241,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'processhtml', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist','copy:images', 'dist-css','processhtml','dist-js','test-js']);
+  grunt.registerTask('default', ['clean:dist','copy:images', 'dist-css','processhtml','htmlmin','dist-js','test-js']);
 
-  // Docs task.
-//  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
-//  grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
-//  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
-//  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-//  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
-
-//  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
 
 };
