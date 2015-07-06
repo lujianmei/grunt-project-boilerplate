@@ -12,16 +12,16 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
-  var fs = require('fs');
-  var path = require('path');
-  var npmShrinkwrap = require('npm-shrinkwrap');
+//var fs = require('fs');
+//var path = require('path');
+//var npmShrinkwrap = require('npm-shrinkwrap');
   var configBridge = grunt.file.readJSON('./configBridge.json', { encoding: 'utf8' });
 
-  Object.keys(configBridge.paths).forEach(function (key) {
-    configBridge.paths[key].forEach(function (val, i, arr) {
-      arr[i] = path.join('./docs/assets', val);
-    });
-  });
+//Object.keys(configBridge.paths).forEach(function (key) {
+//  configBridge.paths[key].forEach(function (val, i, arr) {
+//    arr[i] = path.join('./docs/assets', val);
+//  });
+//});
 
   // Project configuration.
   grunt.initConfig({

@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+ul, ol {
+  list-style: none;
+}
+
+body {
+  font-size: x-small;
+  color: #666;
+  background-color: #eee;
+
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  padding: 7.5em 0 5.5em;
+  margin: 3em 0;
+  background: #004756;
+}
+
+
+.gridster {
+  width: 110px;
+  margin: 0 auto;
+}
+.gridster .gs_w {
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+}
+
+.x {
+  position: relative;
+}
+
+
+
+
+
+[data-col="4"] {
+  left: 74px;
+}
+[data-col="3"] {
+  left: 50px;
+}
+[data-col="2"] {
+  left: 26px;
+}
+[data-col="1"] {
+  left: 2px;
+}
+[data-row="16"] {
+  top: 362px;
+}
+[data-row="15"] {
+  top: 338px;
+}
+[data-row="14"] {
+  top: 314px;
+}
+[data-row="13"] {
+  top: 290px;
+}
+[data-row="12"] {
+  top: 266px;
+}
+[data-row="11"] {
+  top: 242px;
+}
+[data-row="10"] {
+  top: 218px;
+}
+[data-row="9"] {
+  top: 194px;
+}
+[data-row="8"] {
+  top: 170px;
+}
+[data-row="7"] {
+  top: 146px;
+}
+[data-row="6"] {
+  top: 122px;
+}
+[data-row="5"] {
+  top: 98px;
+}
+[data-row="4"] {
+  top: 74px;
+}
+[data-row="3"] {
+  top: 50px;
+}
+[data-row="2"] {
+  top: 26px;
+}
+[data-row="1"] {
+  top: 2px;
+}
+[data-sizey="1"] {
+  height: 20px;
+}
+[data-sizey="2"] {
+  height: 44px;
+}
+[data-sizey="3"] {
+  height: 68px;
+}
+[data-sizey="4"] {
+  height: 92px;
+}
+[data-sizey="5"] {
+  height: 116px;
+}
+[data-sizey="6"] {
+  height: 140px;
+}
+[data-sizey="7"] {
+  height: 164px;
+}
+[data-sizey="8"] {
+  height: 188px;
+}
+[data-sizey="9"] {
+  height: 212px;
+}
+[data-sizey="10"] {
+  height: 236px;
+}
+[data-sizey="11"] {
+  height: 260px;
+}
+[data-sizey="12"] {
+  height: 284px;
+}
+[data-sizey="13"] {
+  height: 308px;
+}
+[data-sizey="14"] {
+  height: 332px;
+}
+[data-sizey="15"] {
+  height: 356px;
+}
+[data-sizex="1"] {
+  width: 20px;
+}
+[data-sizex="2"] {
+  width: 44px;
+}
+[data-sizex="3"] {
+  width: 68px;
+}
+[data-sizex="4"] {
+  width: 92px;
+}
+[data-sizex="5"] {
+  width: 116px;
+}
+[data-sizex="6"] {
+  width: 140px;
+}
