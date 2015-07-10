@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<title>如何配置当前项目工程</title>
+<!-- 2015-07-07 Tue 19:10 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Lu Jianmei" />
+<meta  name="description" content="A notes that include all works and study things in 2015"
+ />
+<meta  name="keywords" content="org-mode Emacs jquery jquery.mobile jquery.ui wcm" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<style type="text/css">body{margin:
+1em; border-right: 5px solid #bbb; border-bottom: 5px solid #bbb;
+padding: 0; background: #ddd none repeat scroll 0 0; border: 1px
+solid #000; margin: 0; padding: 2em; color: #000;
+font-family: "Bitstream Vera Sans", Verdana, sans-serif;
+font-size: 85%;}code{color: #00f;}div#content{border: 1px solid
+#bbb; background: #fff; margin: 0; padding: 2em;}a{color: #139;
+text-decoration: none; padding: 1px;}a:hover{color:
+#900;}#table-of-contents{margin: 1em 0; padding:
+.1em;}div#content div#org-div-home-and-up{background: #369;
+color: #fff;}div#org-div-home-and-up
+a:link,div#org-div-home-and-up a:visited{color: #fff; background:
+#369;}div#org-div-home-and-up a:hover{color:
+#900;}div.title{margin: -1em -1em 0; font-size: 200%;
+font-weight: bold; background: #369; color: #fff; padding: .75em
+1em; font-family: "BitStream Vera Sans", Verdana; letter-spacing:
+.1em;}h1{background: #369 none repeat scroll 0 0; color: #fff;
+font-family: "BitStream Vera Sans", Verdana; font-size: 200%;
+font-weight: bold; letter-spacing: 0.1em; margin: -1em -1em .2em;
+padding: 0.75em 1em;}h2{font-size: 180%; border-bottom: 1px solid
+#ccc; padding: .2em;}h3{font-size: 120%; border-bottom: 1px solid
+#eee;}h4{font-size: 110%; border-bottom: 1px solid
+#eee;}tt{color: #00f;}.verbatim{margin: .5em 0;}pre{border: 1px
+solid #ccc; background: #eee; padding: .5em; overflow:
+auto;}.verbatim pre{margin: 0;}.verbatim-caption{border: 1px
+solid #ccc; border-bottom: 0; background: #fff; display: block;
+font-size: 80%; padding: .2em;}div#postamble{text-align: left;
+color: #888; font-size: 80%; padding: 0; margin: 0;}div#postamble
+p{padding: 0; margin: 0;}div#postamble a{color:
+#888;}div#postamble a:hover{color: #900;}table{font-size: 100%;
+border-collapse: collapse; margin: .5em 0;}th, td{border: 1px
+solid #777; padding: .3em; margin: 2px;}th{background:
+#eee;}span.underline{text-decoration:
+underline;}.fixme{background: #ff0; font-weight:
+bold;}.ra{text-align: right;}span.todo.NEXT{color:blue;}span.todo.STARTED{color:green;}span.todo.WAITTING{color:orange;}span.todo.HOLD{color:magenta;}.tag{font-size:124%;}</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">如何配置当前项目工程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 目的</a></li>
+<li><a href="#sec-2">2. 环境搭建</a>
+<ul>
+<li><a href="#sec-2-1">2.1. 环境所需</a></li>
+<li><a href="#sec-2-2">2.2. 环境搭建</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. 环境配置</a>
+<ul>
+<li><a href="#sec-3-1">3.1. 目录说明</a></li>
+<li><a href="#sec-3-2">3.2. configBridge.json配置说明</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Grunt构建命令</a></li>
+<li><a href="#sec-5">5. 项目及工作目录命名规范</a>
+<ul>
+<li><a href="#sec-5-1">5.1. 项目名称命名</a></li>
+<li><a href="#sec-5-2">5.2. 项目内的工作名称命名</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 目的</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+为帮助前端开发规范开发工作流程，提高开发效率及代码的准确性，此次引入了Grunt工具来进行前端开发的工作流程改造；
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 环境搭建</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 环境所需</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+环境搭建之前为协助能快速理解，需要简单解释一下Grunt，它是基于nodejs开发的工具，对我们来说，它就是一套工具而已，所以我们仅仅需要学会如何使用，如何配置它即可；
+当前所有我们的项目我已经搭建好，配置文件也规划好了，针对各位使用者来说，仅仅是在目录或文件发生一些变化后，将配置文件做一下调整修改，让grunt能读取到对应的文件即可；
+Grunt环境依赖：nodejs;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 环境搭建</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><ol class="org-ol"><li><a id="sec-2-2-0-1" name="sec-2-2-0-1"></a>安装nodejs<br  /><div class="outline-text-5" id="text-2-2-0-1">
+<p>
+     Nodejs下载：<a href="https://nodejs.org/download/">https://nodejs.org/download/</a>， 在这个页面上找到适合你的下载文件，windows即直接双击安装即可以了；
+如果是其它的操作系统，也可以直接通过下面命令即可以安装；
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">$sudo yum install nodejs npm  #redhat/fedora/centos
+$sudo pacman -S nodejs npm    #archlinux
+$brew install node            #mac
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-2-2-0-2" name="sec-2-2-0-2"></a>安装grunt<br  /><div class="outline-text-5" id="text-2-2-0-2">
+<p>
+Grunt是一个通过大量插件组合而成的一个前端开发的工程构建工具，当然现在grunt已经不仅仅能构建前端的开发，也能完成更复杂的工程构建工作；详细可以去官网了解一下；
+安装完成npm后，通过npm来安装grunt命令行管理工具；
+打开cmd, 然后输入以下命令，安装grunt命令行工具；
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">npm install -g grunt-cli
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-2-2-0-3" name="sec-2-2-0-3"></a>从git上下载项目<br  /><div class="outline-text-5" id="text-2-2-0-3">
+<p>
+环境安装完成后，即可以从git上下载项目，这里以下载2015-casarte-pc这个项目为例，通过gui工具，或者通过命令行均可，这里采用命令行方式下载：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">git clone git@gitlab.trs.com:static-develpement/2015-casarte-pc.git
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-2-2-0-4" name="sec-2-2-0-4"></a>初使化插件<br  /><div class="outline-text-5" id="text-2-2-0-4">
+<p>
+git项目下载完成后，需要通过npm工具对项目环境进行一次初使化，进入项目所在根目录，执行如下命令即可：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">npm i
+</pre>
+</div>
+<p>
+OK, 所有环境搭建完成；
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 环境配置</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 目录说明</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">根目录</th>
+<th scope="col" class="left">二级目录</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">2015-07-02-wajuejihuodong</td>
+<td class="left">&#xa0;</td>
+<td class="left">#工作目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;css</td>
+<td class="left"># 当前工作的css文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;images</td>
+<td class="left"># 当前工作的图片文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;js</td>
+<td class="left"># 当前工作的js文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;psd</td>
+<td class="left"># 当前工作的psd文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">2015-07-04-jianjigaiban</td>
+<td class="left">&#xa0;</td>
+<td class="left">#工作目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;css</td>
+<td class="left"># 当前工作的css文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;images</td>
+<td class="left"># 当前工作的图片文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;js</td>
+<td class="left"># 当前工作的js文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2013;psd</td>
+<td class="left"># 当前工作的psd文件存储目录</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">node_modules</td>
+<td class="left">&#xa0;</td>
+<td class="left">#nodejs插件目录，无视即可</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Gruntfile.js</td>
+<td class="left">&#xa0;</td>
+<td class="left">#Grunt工程配置文件，已经配置完成不需要配置</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">package.json</td>
+<td class="left">&#xa0;</td>
+<td class="left">#项目基本信息配置</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">configBridge.json</td>
+<td class="left">&#xa0;</td>
+<td class="left">#项目目录配置文件，需要经常关注修改的文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> configBridge.json配置说明</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><i><b>对html中的引用的文件进行合并</b></i>
+</li>
+</ul>
+<p>
+"htmlpaths"：将开发的html进行js，css文件按要求合并后，生成到dist目录中；
+</p>
+<ul class="org-ul">
+<li><i><b>对合并后的文件进行压缩</b></i>
+</li>
+</ul>
+<p>
+"htmlpaths_min"：将合并js，css后的html文件进行html的代码压缩
+</p>
+<ul class="org-ul">
+<li><i><b>对各个目录的js文件进行合并文件</b></i>
+</li>
+</ul>
+<p>
+"jspaths"：对js目录下的对应的js文件进行合并成一个文件，生成到dist/js目录中；
+</p>
+<ul class="org-ul">
+<li><i><b>对合并后的js文件进行压缩</b></i>
+</li>
+</ul>
+<p>
+"jspaths_min"：对合并后的js文件进行压缩
+</p>
+<ul class="org-ul">
+<li><i><b>对各个目录中的css文件进行合并</b></i>
+</li>
+</ul>
+<p>
+"csspaths"：对css目录下的所有css文件进行合并成一个文件，生成到dist/css目录中；
+</p>
+<ul class="org-ul">
+<li><i><b>对合并后的css文件进行压缩</b></i>
+</li>
+</ul>
+<p>
+"csspaths_min"：对合并后的css文件进行压缩成
+</p>
+<ul class="org-ul">
+<li><i><b>将开发目录下的图片资源copy到发布目录下</b></i>
+</li>
+</ul>
+<p>
+"imagespaths"：对工作目录下的图片复制到dist/images目录下；
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">{/*目标文件：源文件*/
+    "2015-07-02-wajuejihuodong/dist/index.html": ["2015-07-02-wajuejihuodong/index.html"],
+    "2015-07-02-wajuejihuodong/dist/test.html": ["2015-07-02-wajuejihuodong/test.html"],
+    "2015-07-04-jianjigaiban/dist/index.html": ["2015-07-04-jianjigaiban/index.html"],
+    "2015-07-04-jianjigaiban/dist/test.html": ["2015-07-04-jianjigaiban/test.html"]
+  },
+</pre>
+</div>
+<p>
+当有新的工作目录加入，或者有新的html文件加入项目，则需要相应修改对应的文件；
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Grunt构建命令</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+如下命令即为我们可以使用的命令
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ssh">grunt clean                 #清除生成的dist目录内所有的内容
+grunt dist-js               #合并所有的js文件到对应的工作目录下，然后对其代码进行压缩
+grunt test-js               #对js代码进行检查
+grunt dist-css              #合并所有的css文件，然后对其代码进行检查
+grunt                       #包含所有的js, css, html, images的命令
+</pre>
+</div>
+<p>
+构建完成后，会在各个工作目录中生成一个dist目录，目录下包含所有构建出来的静态页面，css, js, images等文件，双击html文件可以正常打开；
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 项目及工作目录命名规范</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 项目名称命名</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>格式一：年份+项目名称+平台
+<ul class="org-ul">
+<li>例子：2015-casarte-pc, 2015-casarte-mobile
+</li>
+<li>说明：手机与pc分开管理，项目中包含2015年所有的当前项目的工作内容；
+</li>
+</ul>
+</li>
+<li>格式二：年份+项目名称+平台+Renew
+<ul class="org-ul">
+<li>例子：2015-casarte-mobile-renew, 2015-haier-pc-renew
+</li>
+<li>说明：各个项目中的大改版，涉及内容多，周期长，因此需要单独添加一个改版标识项目
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 项目内的工作名称命名</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>格式：yyyy-mm-dd-工作名称
+</li>
+<li>例子：2015-07-24-wajuejihuodong
+</li>
+<li>说明：通过工作产生所在日期，加活动名称来命名当前项目内的不同工作内容，每个工作内容中包含css, js, images, psd目录，可以从当前例子项目中复制过来；
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Lu Jianmei</p>
+<p class="email">Email: <a href="mailto:lu.jianmei@trs.com.cn">lu.jianmei@trs.com.cn</a></p>
+<p class="date">Created: 2015-07-07 Tue 19:10</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

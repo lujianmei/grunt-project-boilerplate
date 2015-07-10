@@ -1,0 +1,139 @@
+#+TITLE: 如何配置当前项目工程
+#+LANGUAGE:  zh
+#+AUTHOR: Lu Jianmei
+#+EMAIL: lu.jianmei@trs.com.cn
+#+OPTIONS:   H:3 num:t   toc:3 \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t p:t pri:t
+#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS:   author:t creator:t timestamp:t email:t
+#+DESCRIPTION: A notes that include all works and study things in 2015
+#+KEYWORDS:  org-mode Emacs jquery jquery.mobile jquery.ui wcm
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{SimSun}
+#+LATEX_CLASS: cn-article
+#+STARTUP: logredeadline, logreschedule
+#+ATTR_HTML: :border 2 :rules all :frame all
+
+* 目的
+  为帮助前端开发规范开发工作流程，提高开发效率及代码的准确性，此次引入了Grunt工具来进行前端开发的工作流程改造；
+
+* 环境搭建
+** 环境所需
+   环境搭建之前为协助能快速理解，需要简单解释一下Grunt，它是基于nodejs开发的工具，对我们来说，它就是一套工具而已，所以我们仅仅需要学会如何使用，如何配置它即可；
+   当前所有我们的项目我已经搭建好，配置文件也规划好了，针对各位使用者来说，仅仅是在目录或文件发生一些变化后，将配置文件做一下调整修改，让grunt能读取到对应的文件即可；
+   Grunt环境依赖：nodejs;
+
+** 环境搭建
+**** 安装nodejs
+     Nodejs下载：https://nodejs.org/download/， 在这个页面上找到适合你的下载文件，windows即直接双击安装即可以了；
+如果是其它的操作系统，也可以直接通过下面命令即可以安装；
+#+begin_src ssh
+$sudo yum install nodejs npm  #redhat/fedora/centos
+$sudo pacman -S nodejs npm    #archlinux
+$brew install node            #mac
+#+end_src
+
+**** 安装grunt
+     Grunt是一个通过大量插件组合而成的一个前端开发的工程构建工具，当然现在grunt已经不仅仅能构建前端的开发，也能完成更复杂的工程构建工作；详细可以去官网了解一下；
+     安装完成npm后，通过npm来安装grunt命令行管理工具；
+     打开cmd, 然后输入以下命令，安装grunt命令行工具；
+#+begin_src ssh
+npm install -g grunt-cli
+#+end_src
+
+**** 从git上下载项目
+     环境安装完成后，即可以从git上下载项目，这里以下载2015-casarte-pc这个项目为例，通过gui工具，或者通过命令行均可，这里采用命令行方式下载：
+#+begin_src ssh
+git clone git@gitlab.trs.com:static-develpement/2015-casarte-pc.git
+#+end_src
+
+**** 初使化插件
+     git项目下载完成后，需要通过npm工具对项目环境进行一次初使化，进入项目所在根目录，执行如下命令即可：
+#+begin_src ssh
+npm i
+#+end_src
+OK, 所有环境搭建完成；
+
+
+* 环境配置
+** 目录说明
+
+   | 根目录                    | 二级目录 | 说明                                       |
+   |---------------------------+----------+--------------------------------------------|
+   | 2015-07-02-wajuejihuodong |          | #工作目录                                  |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --css    | # 当前工作的css文件存储目录                |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --images | # 当前工作的图片文件存储目录               |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --js     | # 当前工作的js文件存储目录                 |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --psd    | # 当前工作的psd文件存储目录                |
+   |---------------------------+----------+--------------------------------------------|
+   | 2015-07-04-jianjigaiban   |          | #工作目录                                  |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --css    | # 当前工作的css文件存储目录                |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --images | # 当前工作的图片文件存储目录               |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --js     | # 当前工作的js文件存储目录                 |
+   |---------------------------+----------+--------------------------------------------|
+   |                           | --psd    | # 当前工作的psd文件存储目录                |
+   |---------------------------+----------+--------------------------------------------|
+   | node_modules              |          | #nodejs插件目录，无视即可                  |
+   |---------------------------+----------+--------------------------------------------|
+   | Gruntfile.js              |          | #Grunt工程配置文件，已经配置完成不需要配置 |
+   |---------------------------+----------+--------------------------------------------|
+   | package.json              |          | #项目基本信息配置                          |
+   |---------------------------+----------+--------------------------------------------|
+   | configBridge.json         |          | #项目目录配置文件，需要经常关注修改的文件  |
+** configBridge.json配置说明
+   + /*对html中的引用的文件进行合并*/
+   "htmlpaths"：将开发的html进行js，css文件按要求合并后，生成到dist目录中；
+   + /*对合并后的文件进行压缩*/
+   "htmlpaths_min"：将合并js，css后的html文件进行html的代码压缩
+   + /*对各个目录的js文件进行合并文件*/
+   "jspaths"：对js目录下的对应的js文件进行合并成一个文件，生成到dist/js目录中；
+   + /*对合并后的js文件进行压缩*/
+   "jspaths_min"：对合并后的js文件进行压缩
+   + /*对各个目录中的css文件进行合并*/
+   "csspaths"：对css目录下的所有css文件进行合并成一个文件，生成到dist/css目录中；
+   + /*对合并后的css文件进行压缩*/
+   "csspaths_min"：对合并后的css文件进行压缩成
+   + /*将开发目录下的图片资源copy到发布目录下*/
+   "imagespaths"：对工作目录下的图片复制到dist/images目录下；
+#+begin_src ssh
+{/*目标文件：源文件*/
+    "2015-07-02-wajuejihuodong/dist/index.html": ["2015-07-02-wajuejihuodong/index.html"],
+    "2015-07-02-wajuejihuodong/dist/test.html": ["2015-07-02-wajuejihuodong/test.html"],
+    "2015-07-04-jianjigaiban/dist/index.html": ["2015-07-04-jianjigaiban/index.html"],
+    "2015-07-04-jianjigaiban/dist/test.html": ["2015-07-04-jianjigaiban/test.html"]
+  },
+#+end_src
+当有新的工作目录加入，或者有新的html文件加入项目，则需要相应修改对应的文件；
+
+
+* Grunt构建命令
+  如下命令即为我们可以使用的命令
+#+begin_src ssh
+    grunt clean                 #清除生成的dist目录内所有的内容
+    grunt dist-js               #合并所有的js文件到对应的工作目录下，然后对其代码进行压缩
+    grunt test-js               #对js代码进行检查
+    grunt dist-css              #合并所有的css文件，然后对其代码进行检查
+    grunt                       #包含所有的js, css, html, images的命令
+#+end_src
+构建完成后，会在各个工作目录中生成一个dist目录，目录下包含所有构建出来的静态页面，css, js, images等文件，双击html文件可以正常打开；
+* 项目及工作目录命名规范
+** 项目名称命名
+   + 格式一：年份+项目名称+平台
+     + 例子：2015-casarte-pc, 2015-casarte-mobile
+     + 说明：手机与pc分开管理，项目中包含2015年所有的当前项目的工作内容；
+   + 格式二：年份+项目名称+平台+Renew
+     + 例子：2015-casarte-mobile-renew, 2015-haier-pc-renew
+     + 说明：各个项目中的大改版，涉及内容多，周期长，因此需要单独添加一个改版标识项目
+** 项目内的工作名称命名
+   + 格式：yyyy-mm-dd-工作名称
+   + 例子：2015-07-24-wajuejihuodong
+   + 说明：通过工作产生所在日期，加活动名称来命名当前项目内的不同工作内容，每个工作内容中包含css, js, images, psd目录，可以从当前例子项目中复制过来；
